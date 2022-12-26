@@ -22,7 +22,7 @@ export function reducer(state: IState, action: IAction): IState {
 
     case "DECREMENT":
       return produce(state, draft => {
-        draft.count += 1
+        draft.count -= 1
       })
   }
 }

@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"
 import { BaseLayout } from "@/layouts/BaseLayout"
+import { Loader } from "@/components"
 import { Users } from "@/lib/api"
 import { IUser } from "@/lib/types"
 
@@ -10,7 +11,7 @@ export default function About() {
     <BaseLayout>
       <h1 className="text-xl mb-2">About Us</h1>
       <>
-        {users.isLoading && <span className="text-sm">Loading...</span>}
+        {users.isLoading && <Loader size="small" />}
       </>
 
       <>
