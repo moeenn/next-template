@@ -10,11 +10,12 @@ export const Navbar = () => {
     return (
       <Link
         className={classNames({
-          "px-2": true,
-          "py-1": true,
-          "text-sm": true,
-          "hover:bg-gray-200": true,
-          "border-b-2 border-blue-600": router.pathname === link.href,
+          "px-3": true,
+          "py-2": true,
+          "text-xs": true,
+          "rounded": true,
+          "hover:bg-blue-500": true,
+          "bg-blue-700": router.pathname === link.href,
         })}
         href={link.href}
         key={link.href}
@@ -23,7 +24,7 @@ export const Navbar = () => {
   })
 
   return (
-    <nav className="bg-gray-100 py-4">
+    <nav className="bg-blue-600 text-white py-4">
       <Container>
         <div className="flex flex-row justify-between">
           <Link href="/">
