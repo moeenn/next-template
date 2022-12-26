@@ -14,10 +14,6 @@ export const Localstorage = {
   },
   remove(key: string) {
     if (typeof window == "undefined") return
-
-    if (!this.get(key)) {
-      console.error("cannot clear localstorage key:", key)
-    }
     localStorage.removeItem(key)
   }
 }

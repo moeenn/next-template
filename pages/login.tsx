@@ -1,4 +1,5 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
+import { useRouter } from "next/router"
 import { useMutation } from "react-query"
 import { IForm } from "@/components/LoginDialog"
 import { AuthContext } from "@/lib/context/AuthContext"
@@ -8,17 +9,22 @@ import { Auth } from "@/lib/api"
 import { IUser } from "@/lib/types"
 
 export default function Login() {
+  const router = useRouter()
   const authContext = useContext(AuthContext)
   const mutation = useMutation((payload: IForm) => {
     return Auth.Login(payload)
   })
 
-  if (mutation.isSuccess) {
-    authContext?.dispatch({
-      type: "LOGIN",
-      payload: (mutation.data as { token: string, user: IUser })
-    })
-  }
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      authContext.dispatch({
+        type: "LOGIN",
+        payload: (mutation.data as { token: string, user: IUser })
+      })
+
+      router.push("/")
+    }
+  }, [mutation.isSuccess])
 
   return (
     <BaseLayout>
