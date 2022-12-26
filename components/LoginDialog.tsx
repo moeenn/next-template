@@ -1,16 +1,22 @@
+import { FC } from "react"
 import { useForm } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
-import { InputError } from "@/components"
+import { InputError, Loader } from "@/components"
 import { validators } from "@/lib/validators"
 
-interface IForm {
+export interface IForm {
   email: string
   password: string
 }
 
-export function LoginDialog() {
+interface IProps {
+  handleSubmit: (form: IForm) => void
+  loading: boolean
+}
+
+export const LoginDialog: FC<IProps> = (props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<IForm>()
-  const onSubmit = (data: IForm) => console.log(data)
+  const onSubmit = (data: IForm) => props.handleSubmit(data)
 
   return (
     <div>
@@ -52,11 +58,14 @@ export function LoginDialog() {
           </fieldset>
         </div>
 
-        <input
-          type="submit"
-          value="Login"
-          className="bg-blue-600 text-white text-sm px-3 py-2 rounded"
-        />
+        <button
+          className="bg-blue-600 text-white text-sm px-3 py-2 rounded flex "
+        >
+          <div className="mx-auto flex flex-row space-x-2">
+            {props.loading && <Loader size="small" />}
+            <span className="my-auto">Login</span>
+          </div>
+        </button>
       </form>
     </div>
   )

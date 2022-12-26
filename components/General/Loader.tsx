@@ -11,7 +11,7 @@ export const Loader: FC<IProps> = (props) => {
       "animate-spin": true, 
       "border border-2": true, 
       "border-blue-300": true, 
-      "border-l-blue-700": true, 
+      "border-l-green-700": true, 
       "rounded-full": true,
       "h-4": props.size === "small",  
       "w-4": props.size === "small",

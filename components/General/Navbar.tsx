@@ -1,12 +1,21 @@
+import { useContext } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import classNames from "classnames"
-import { NavLinks } from "@/lib/static/NavLinks"
 import { Container } from "@/components"
+import { AuthContext } from "@/lib/context/AuthContext"
 
 export const Navbar = () => {
   const router = useRouter()
-  const linkElements = NavLinks.map(link => {
+  const authContext = useContext(AuthContext)
+
+  const navLinks = [
+    { text: "Login", href: "/login" },
+    { text: "Logout", href: "/logout" },
+    { text: "About", href: "/about" },
+  ]
+
+  const linkElements = navLinks.map(link => {
     return (
       <Link
         className={classNames({
