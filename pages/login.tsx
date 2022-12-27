@@ -31,17 +31,18 @@ export default function Login() {
       <div className="lg:grid lg:grid-cols-3 mt-5">
         <div className="lg:col-span-1">
           <div className="py-4 rounded">
+
+            {mutation.isError && (
+              <div className="bg-red-200 p-2 mb-5 rounded">
+                <p className="text-xs">{(mutation.error as Error).message}</p>
+              </div>
+            )}
+
             <h1 className="text-2xl mb-4">Login</h1>
             <LoginDialog
               handleSubmit={(form: IForm) => mutation.mutate(form)}
               loading={mutation.isLoading}
             />
-
-            {mutation.isError && (
-              <div className="bg-red-200 p-2 rounded">
-                <p className="text-xs">Login failed</p>
-              </div>
-            )}
 
           </div>
         </div>

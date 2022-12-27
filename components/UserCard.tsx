@@ -5,12 +5,6 @@ export default function UserCard() {
 
   return (
     <div>
-      <>
-        {!auth.user.id && (
-          <div>User not set</div>
-        )}
-      </>
-
       {!!auth.user.id && (
         <div className="flex flex-col space-y-3">
           <p>id: {auth.user.id}</p>

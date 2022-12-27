@@ -1,15 +1,18 @@
 import { API } from "./API"
 import { IForm } from "@/components/LoginDialog"
 
-const Login = async (form: IForm) => {
-  const args = {
-    url: "http://localhost:5000/login",
-    data: form,
-  }
-
-  return API.post(args)
-}
-
 export const Auth = {
-  Login,
+  Login: async (form: IForm) => {
+    return API.post({
+      url: "http://localhost:5000/login",
+      data: form,
+      error: "Invalid email or password"
+    })
+  },
+  Logout: async () => {
+    return API.get({
+      url: "http://localhost:5000/logout",
+      error: "Failed to logout user",
+    })
+  },
 }
