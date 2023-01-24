@@ -15,5 +15,5 @@ export const Localstorage = {
   remove(key: string) {
     if (typeof window == "undefined") return
     localStorage.removeItem(key)
-  }
+  },
 }

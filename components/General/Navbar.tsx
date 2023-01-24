@@ -7,8 +7,8 @@ export const Navbar = () => {
   const { navLinks, url } = useNavLinks()
 
   const linkElements = navLinks
-    .filter(link => link.show)
-    .map(link => {
+    .filter((link) => link.show)
+    .map((link) => {
       if (link.href) {
         return (
           <Link
@@ -18,7 +18,9 @@ export const Navbar = () => {
             })}
             href={link.href}
             key={link.id}
-          >{link.text}</Link>
+          >
+            {link.text}
+          </Link>
         )
       }
 
@@ -27,7 +29,9 @@ export const Navbar = () => {
           className="px-3 py-2 text-xs rounded hover:bg-blue-500"
           onClick={link.action}
           key={link.id}
-        >{link.text}</button>
+        >
+          {link.text}
+        </button>
       )
     })
 
@@ -39,9 +43,7 @@ export const Navbar = () => {
             <h1 className="text-lg">Logo</h1>
           </Link>
 
-          <div className="flex flex-row space-x-3 my-auto">
-            {linkElements}
-          </div>
+          <div className="flex flex-row space-x-3 my-auto">{linkElements}</div>
         </div>
       </Container>
     </nav>

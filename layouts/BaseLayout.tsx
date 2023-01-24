@@ -11,9 +11,7 @@ export const BaseLayout: FC<IProps> = ({ children }: IProps) => {
     <>
       <Navbar />
       <div className="pt-4">
-        <Container>
-          {children}
-        </Container>
+        <Container>{children}</Container>
       </div>
     </>
   )

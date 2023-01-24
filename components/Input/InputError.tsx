@@ -5,7 +5,5 @@ interface IProps {
 }
 
 export const InputError: FC<IProps> = ({ message }) => {
-  return (
-    <p className="text-xs text-red-700">{message}</p>
-  )
+  return <p className="text-xs text-red-700">{message}</p>
 }

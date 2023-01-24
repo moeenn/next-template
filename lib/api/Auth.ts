@@ -6,7 +6,7 @@ export const Auth = {
     return API.post({
       url: "http://localhost:5000/login",
       data: form,
-      error: "Invalid email or password"
+      error: "Invalid email or password",
     })
   },
   Logout: async () => {

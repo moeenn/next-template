@@ -10,14 +10,18 @@ export const Counter = () => {
         className="bg-gray-200 rounded-l px-3 py-2"
         onClick={() => dispatch({ type: "DECREMENT", payload: { by: 1 } })}
         disabled={state.count === 0}
-      >-</button>
+      >
+        -
+      </button>
       <div className="bg-gray-100 flex">
         <span className="my-auto px-4">{state.count}</span>
       </div>
       <button
         className="bg-gray-200 rounded-r px-3 py-2"
         onClick={() => dispatch({ type: "INCREMENT", payload: { by: 1 } })}
-      >+</button>
+      >
+        +
+      </button>
     </div>
   )
 }

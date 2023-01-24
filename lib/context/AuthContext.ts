@@ -13,7 +13,7 @@ export const AuthContext = createContext<IAuthContext>({
       id: 0,
       name: "",
       email: "",
-    }
+    },
   },
-  dispatch: (action: IAction) => { }
+  dispatch: (action: IAction) => {},
 })

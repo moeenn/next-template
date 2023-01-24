@@ -4,11 +4,11 @@ import { Localstorage } from "@/lib/services"
 
 export interface IState {
   token: string
-  user: IUser,
+  user: IUser
 }
 
 export type IAction =
-  | { type: "LOGIN", payload: { token: string, user: IUser } }
+  | { type: "LOGIN"; payload: { token: string; user: IUser } }
   | { type: "LOGOUT" }
 
 const defaultToken = ""
@@ -20,7 +20,7 @@ const defaultUser: IUser = {
 
 export const initState: IState = {
   token: Localstorage.get("next.token") ?? defaultToken,
-  user: Localstorage.get("next.user") ?? defaultUser
+  user: Localstorage.get("next.user") ?? defaultUser,
 }
 
 export function reducer(state: IState, action: IAction): IState {
@@ -29,7 +29,7 @@ export function reducer(state: IState, action: IAction): IState {
       Localstorage.set("next.token", action.payload.token)
       Localstorage.set("next.user", action.payload.user)
 
-      return produce(state, draft => {
+      return produce(state, (draft) => {
         draft.token = action.payload.token
         draft.user = action.payload.user
       })

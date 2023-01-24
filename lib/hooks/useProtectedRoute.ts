@@ -15,8 +15,8 @@ export const useProtectedRoute = (args: IUseProtectedRoutesArgs) => {
 
   /**
    *  redirect to provided URL if user is not logged-in
-   * 
-  */
+   *
+   */
   if (!authContext.state.token) {
     router.push(args.redirectURL)
   }

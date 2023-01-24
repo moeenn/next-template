@@ -19,7 +19,7 @@ export default function Login() {
     if (mutation.isSuccess) {
       authContext.dispatch({
         type: "LOGIN",
-        payload: (mutation.data as { token: string, user: IUser })
+        payload: mutation.data as { token: string; user: IUser },
       })
 
       router.push("/")
@@ -31,7 +31,6 @@ export default function Login() {
       <div className="lg:grid lg:grid-cols-3 mt-5">
         <div className="lg:col-span-1">
           <div className="py-4 rounded">
-
             {mutation.isError && (
               <div className="bg-red-200 p-2 mb-5 rounded">
                 <p className="text-xs">{(mutation.error as Error).message}</p>
@@ -43,7 +42,6 @@ export default function Login() {
               handleSubmit={(form: IForm) => mutation.mutate(form)}
               loading={mutation.isLoading}
             />
-
           </div>
         </div>
       </div>

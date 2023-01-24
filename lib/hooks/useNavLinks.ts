@@ -27,5 +27,5 @@ export const useNavLinks = () => {
     { id: 3, text: "Profile", href: "/profile", show: !!auth.token },
   ]
 
-  return {navLinks, url: router.pathname }
+  return { navLinks, url: router.pathname }
 }

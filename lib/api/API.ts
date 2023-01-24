@@ -1,7 +1,7 @@
 import { Localstorage } from "@/lib/services"
 
 export const API = {
-  get: async (args: { url: string, error: string }) => {
+  get: async (args: { url: string; error: string }) => {
     const res = await fetch(args.url, {
       headers: getHeaders(),
     })
@@ -11,11 +11,11 @@ export const API = {
 
     return res.json()
   },
-  post: async (args: { url: string, data: unknown, error: string }) => {
+  post: async (args: { url: string; data: unknown; error: string }) => {
     const res = await fetch(args.url, {
       method: "POST",
       headers: getHeaders(),
-      body: JSON.stringify(args.data)
+      body: JSON.stringify(args.data),
     })
 
     if (!res.ok) {
@@ -23,17 +23,17 @@ export const API = {
     }
 
     return res.json()
-  }
+  },
 }
 
 /**
- *  if a user is logged-in, then we include the auth bearer token in all 
+ *  if a user is logged-in, then we include the auth bearer token in all
  *  API requests made by the user to the server
-*/
+ */
 function getHeaders() {
-  const token = (Localstorage.get("next.user") as string)
+  const token = Localstorage.get("next.user") as string
   return new Headers({
     "Content-type": "application/json",
-    "Authorization": token ?? "Bearer " + token,
+    Authorization: token ?? "Bearer " + token,
   })
 }

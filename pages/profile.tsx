@@ -5,11 +5,11 @@ import { useProtectedRoute } from "@/lib/hooks"
 
 /**
  *  render component on client-side only (prevent SSR)
- * 
-*/
+ *
+ */
 const UserCard = dynamic(() => import("@/components/UserCard"), {
   loading: () => <Loader size="small" />,
-  ssr: false
+  ssr: false,
 })
 
 export default function Profile() {
