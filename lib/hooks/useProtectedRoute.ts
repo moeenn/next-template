@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthContext } from "@/lib/context/AuthContext"
 
 interface IUseProtectedRoutesArgs {
@@ -7,17 +7,19 @@ interface IUseProtectedRoutesArgs {
 }
 
 export const useProtectedRoute = (args: IUseProtectedRoutesArgs) => {
-  /* only execute client side */
-  if (typeof window === "undefined") return
-
   const router = useRouter()
   const authContext = useContext(AuthContext)
 
-  /**
-   *  redirect to provided URL if user is not logged-in
-   *
-   */
-  if (!authContext.state.token) {
-    router.push(args.redirectURL)
-  }
+  useEffect(() => {
+    /* only execute client side */
+    if (typeof window === "undefined") return
+
+    /**
+     *  redirect to provided URL if user is not logged-in
+     *
+     */
+    if (!authContext.state.token) {
+      router.push(args.redirectURL)
+    }
+  })
 }

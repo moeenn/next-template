@@ -24,7 +24,7 @@ export default function Login() {
 
       router.push("/")
     }
-  }, [mutation.isSuccess])
+  }, [mutation.isSuccess, mutation.data, authContext, router])
 
   return (
     <BaseLayout>
