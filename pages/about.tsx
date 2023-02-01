@@ -1,11 +1,11 @@
 import { useQuery } from "react-query"
 import { BaseLayout } from "@/layouts/BaseLayout"
 import { Loader } from "@/components"
-import { Users } from "@/lib/api"
+import { api } from "@/lib/api"
 import { IUser } from "@/lib/types"
 
 export default function About() {
-  const users = useQuery<IUser[], Error>("users", Users.GetAll)
+  const users = useQuery<IUser[], Error>("users", api.users.getAll)
 
   return (
     <BaseLayout>

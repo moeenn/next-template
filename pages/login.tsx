@@ -5,14 +5,14 @@ import { IForm } from "@/components/LoginDialog"
 import { AuthContext } from "@/lib/context/AuthContext"
 import { BaseLayout } from "@/layouts/BaseLayout"
 import { LoginDialog } from "@/components"
-import { Auth } from "@/lib/api"
+import { api } from "@/lib/api"
 import { IUser } from "@/lib/types"
 
 export default function Login() {
   const router = useRouter()
   const authContext = useContext(AuthContext)
   const mutation = useMutation((payload: IForm) => {
-    return Auth.Login(payload)
+    return api.auth.login(payload)
   })
 
   useEffect(() => {
@@ -21,7 +21,6 @@ export default function Login() {
         type: "LOGIN",
         payload: mutation.data as { token: string; user: IUser },
       })
-
       router.push("/")
     }
   }, [mutation.isSuccess, mutation.data, authContext, router])

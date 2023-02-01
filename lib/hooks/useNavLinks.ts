@@ -16,8 +16,6 @@ export const useNavLinks = () => {
   const logoutAction = () => {
     auth.dispatch({ type: "LOGOUT" })
     router.push("/")
-
-    // TODO: make API call to revoke token on the server
   }
 
   const navLinks: INavLink[] = [
